@@ -1,16 +1,16 @@
 const Employee = require("../lib/Employee");
-
+// making sure there is an employee constructor
 test("Can instantiate Employee instance", () => {
   const e = new Employee();
   expect(typeof(e)).toBe("object");
 });
-
+// making sure the user input for name is reaching its destination
 test("Can set name via constructor arguments", () => {
   const name = "Alice";
   const e = new Employee(name);
   expect(e.name).toBe(name);
 });
-
+// user id input is wokring correctly
 test("Can set id via constructor argument", () => {
   const testValue = 100;
   const e = new Employee("Foo", testValue);

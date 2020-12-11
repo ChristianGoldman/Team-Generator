@@ -10,7 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const employeArray = [];
-
+// asking users questions in the command line
 function test() {
   inquirer
     .prompt([
@@ -38,6 +38,7 @@ function test() {
     ])
     .then(function (answers) {
       inquirer
+      // checking to see what role the user has selected
         .prompt([
           {
             type: "input",
@@ -58,6 +59,7 @@ function test() {
             when: () => answers.role === "Intern",
           },
         ])
+        // if user selected this role push data into array
         .then(function (specAnswer) {
           console.log(answers.role);
           switch (answers.role) {
@@ -69,6 +71,7 @@ function test() {
                 specAnswer.github
               );
               employeArray.push(engineer);
+              // if user selected engineer run testAgain function
               testAgain();
               break;
 
@@ -80,6 +83,7 @@ function test() {
                 specAnswer.school
               );
               employeArray.push(intern);
+              // if user selected engineer run testAgain function
               testAgain();
               break;
 
@@ -91,6 +95,7 @@ function test() {
                 specAnswer.office
               );
               employeArray.push(manager);
+              // if user selected engineer run testAgain function
               testAgain();
               break;
             default:
@@ -100,6 +105,7 @@ function test() {
         });
     });
 }
+// testAgain allows user to add as many employees as they wish
 function testAgain() {
   inquirer
     .prompt([
@@ -110,21 +116,23 @@ function testAgain() {
         choices: ["Yes", "No"],
       },
     ])
+    // if user selects yes to more employees run testAgain
     .then(function (again) {
       if (again.again === "Yes") {
         test();
       } else {
-        //checking to see if output folder not existed
+        //checking to see if output folder exists if no generate folder
         if(!fs.existsSync(OUTPUT_DIR)){
           fs.mkdirSync(OUTPUT_DIR)
         }
+        // if user selects no to more employees writefile and call render function
         fs.writeFile(outputPath, render(employeArray), (err) => {
           if (err) throw err;
         });
       }
     });
 }
-
+// calling the inquirer prompt questions function
 test();
 
 // do first prompt get answers
