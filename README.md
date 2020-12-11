@@ -20,9 +20,11 @@
 2. Change directory to the cloned repo
 3. Navigate to the Team-Generator folder
 4. In the command line run "npm install"
-5. In the commmand line run "node app.js"
-6. In the command line fill out all relevant questions
-7. Once you have filled out all the questions you should see a Generated HTML file with all the corresponding information. It should look something like this.
+5. In the command line run "npm run test"
+6. Code should pass all tests
+7. In the commmand line run "node app.js"
+8. In the command line fill out all relevant questions
+9. Once you have filled out all the questions you should see a Generated HTML file with all the corresponding information. It should look something like this.
 ![About Me](assets/teamgenerator.png)
 ## Credits ##
 * Cwerness gitlab
